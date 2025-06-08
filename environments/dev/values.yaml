@@ -4,28 +4,28 @@ global:
 services:
   api-gateway:
     image:
-      tag: 47f750e
+      tag: 986d2ad
     ingress:
       host: petclinic-dev.com
 
   config-server:
     image:
-      tag: latest
+      tag: 986d2ad
 
   discovery-server:
     image:
-      tag: latest
+      tag: 986d2ad
 
   customers-service:
     image:
-      tag: latest
+      tag: 986d2ad
     
   vets-service:
     image:
-      tag: latest
+      tag: 986d2ad
 
   visits-service:
     image:
-      tag: latest
+      tag: 986d2ad
 
   
