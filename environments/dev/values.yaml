@@ -10,11 +10,11 @@ services:
 
   config-server:
     image:
-      tag: 986d2ad
+      tag: d52808b
 
   discovery-server:
     image:
-      tag: 986d2ad
+      tag: d52808b
 
   customers-service:
     image:
