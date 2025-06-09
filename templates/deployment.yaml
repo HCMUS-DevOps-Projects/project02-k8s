@@ -16,6 +16,10 @@ spec:
     metadata: 
       labels:
         app: {{ $svc.name }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "{{ $svc.port }}"
     spec:
       {{- if eq $svc.name "config-server" }}
       # Config server doesn't wait for anything
