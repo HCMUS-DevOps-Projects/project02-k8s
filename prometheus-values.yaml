@@ -1,0 +1,13 @@
+serverFiles:
+  alerting_rules.yml:
+    groups:
+      - name: http-request-alerts
+        rules:
+          - alert: HighErrorRate
+            expr: sum(rate(http_server_requests_seconds_count{status=~"5.."}[30s])) > 10
+            for: 30s
+            labels:
+              severity: warning
+            annotations:
+              summary: "High rate of 5xx errors"
+              description: "More than 10 HTTP 5xx errors in the last 30 seconds"
