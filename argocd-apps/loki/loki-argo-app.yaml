@@ -1,17 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-stack
+  name: loki-test-env
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: '5.42.0'
-    chart: loki-stack
+    repoURL: 'https://github.com/HCMUS-DevOps-Projects/project02-k8s.git'
+    targetRevision: loki
+    path: argocd-apps/loki
     helm:
       valueFiles:
-      - 'loki-values.yaml'
+        - 'loki-values.yaml'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
@@ -20,4 +22,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
