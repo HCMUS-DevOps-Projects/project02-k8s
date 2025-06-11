@@ -1,19 +1,20 @@
+# File để deploy môi trường thử nghiệm cho nhánh loki
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-test-env
+  name: petclinic-loki-review
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/HCMUS-DevOps-Projects/project02-k8s.git'
+    repoURL: 'https://github.com/HCMUS-DevOps-Projects/project02-k8s.git' 
     targetRevision: loki
-    path: argocd-apps/loki
+    path: .
     helm:
       valueFiles:
-        - 'loki-values.yaml'
+      - environments/loki-review/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
@@ -21,5 +22,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
