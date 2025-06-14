@@ -1,28 +1,30 @@
 services:
   api-gateway:
+    name: api-gateway
     image:
       tag: loki-test-v1
 
   config-server:
+    name: config-server
     image:
       tag: loki-test-v1
 
   discovery-server:
+    name: discovery-server 
     image:
-      tag: loki-test-v1
+      tag: loki-test-v1 
 
   customers-service:
+    name: customers-service
     image:
       tag: loki-test-v1
 
   visits-service:
-    image:
-      tag: loki-test-v1 
-
-  vets-service:
+    name: visits-service
     image:
       tag: loki-test-v1
 
-  genai-service:
+  vets-service:
+    name: vets-service
     image:
       tag: loki-test-v1
