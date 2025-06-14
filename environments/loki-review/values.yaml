@@ -1,3 +1,6 @@
+global:
+  dockeruser: minhhuy27
+
 services:
   api-gateway:
     name: api-gateway
