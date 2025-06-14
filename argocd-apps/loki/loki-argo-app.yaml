@@ -10,7 +10,8 @@ spec:
   source:
     repoURL: 'https://github.com/HCMUS-DevOps-Projects/project02-k8s.git'
     targetRevision: loki
-    path: argocd-apps/loki
+    path: argocd-apps/loki # ArgoCD sẽ dùng chart và values trong thư mục này
+    chart: loki-stack     # Chỉ định tên chart cần cài
     helm:
       valueFiles:
         - 'loki-values.yaml'
