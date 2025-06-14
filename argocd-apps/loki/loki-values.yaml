@@ -1,0 +1,20 @@
+loki:
+  enabled: true
+  persistence:
+    enabled: false
+
+promtail:
+  enabled: true
+  # Cấu hình Promtail để nó biết cách thu thập log từ các pod
+  config:
+    snippets:
+      # Cấu hình pipeline để parse log và trích xuất traceId
+      pipelineStages:
+        - cri: {}
+        # Dùng regex để trích xuất các trường từ log message
+        - regex:
+            expression: '.*\[(?P<app_name>.*),(?P<trace_id>[a-f0-9-]*),(?P<span_id>[a-f0-9-]*)\].*'
+        # Gắn label 'app_name' (được trích xuất) vào log trong Loki
+        - labels:
+            app: app_name
+            traceID: trace_id
