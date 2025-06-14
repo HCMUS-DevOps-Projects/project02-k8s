@@ -8,16 +8,32 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/HCMUS-DevOps-Projects/project02-k8s.git'
-    targetRevision: loki
-    path: argocd-apps/loki # ArgoCD sẽ dùng chart và values trong thư mục này
-    chart: loki-stack     # Chỉ định tên chart cần cài
+    repoURL: 'https://grafana.github.io/helm-charts'
+    chart: loki-stack
+    targetRevision: 5.42.0
     helm:
-      valueFiles:
-        - 'loki-values.yaml'
+      values: |
+        loki:
+          enabled: true
+          persistence:
+            enabled: false
+
+        promtail:
+          enabled: true
+          config:
+            snippets:
+              pipelineStages:
+                - cri: {}
+                - regex:
+                    expression: '.*\[(?P<app_name>.*),(?P<trace_id>[a-f0-9-]*),(?P<span_id>[a-f0-9-]*)\].*'
+                - labels:
+                    app: app_name
+                    traceID: trace_id
+  
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
+  
   syncPolicy:
     automated:
       prune: true
