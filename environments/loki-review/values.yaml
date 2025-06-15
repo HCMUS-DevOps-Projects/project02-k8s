@@ -1,4 +1,5 @@
 global:
+  namespace: monitoring
   dockeruser: minhhuy27
 
 services:
