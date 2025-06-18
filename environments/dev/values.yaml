@@ -4,7 +4,7 @@ global:
 services:
   api-gateway:
     image:
-      tag: 7233f76
+      tag: 44ef3df
     ingress:
       host: petclinic-dev.com
 
@@ -18,14 +18,14 @@ services:
 
   customers-service:
     image:
-      tag: 7233f76
+      tag: 44ef3df
     
   vets-service:
     image:
-      tag: 7233f76
+      tag: 44ef3df
 
   visits-service:
     image:
-      tag: 7233f76
+      tag: 44ef3df
 
   
