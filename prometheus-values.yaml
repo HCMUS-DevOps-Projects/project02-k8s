@@ -11,3 +11,6 @@ serverFiles:
             annotations:
               summary: "High rate of 5xx errors"
               description: "More than 10 HTTP 5xx errors in the last 30 seconds"
+server:
+  extraArgs:
+    enable-feature: exemplar-storage
