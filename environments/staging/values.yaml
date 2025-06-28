@@ -2,7 +2,7 @@ global:
   namespace: staging
   dockeruser: tlavu2004
 
-imageTag: &tag 10.0
+imageTag: &tag V5.7
 
 services:
   api-gateway:
